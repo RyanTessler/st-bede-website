@@ -1,0 +1,27 @@
+# Select the editing interface setup
+editor:
+  default_path: index.html
+
+# Give the navigation styling options clear, human names in the sidebar
+_inputs:
+  navigation:
+    type: array
+    options:
+      structures:
+        values:
+          - value:
+              text: "New Link"
+              link: "#"
+              style: "standard"
+            label: "Navigation Link"
+            _inputs:
+              style:
+                type: select
+                options:
+                  values:
+                    - name: "Standard Link"
+                      value: "standard"
+                    - name: "Gold Highlight (e.g. Mass Times)"
+                      value: "highlight-gold"
+                    - name: "Solid Button (e.g. Online Giving)"
+                      value: "button-solid"

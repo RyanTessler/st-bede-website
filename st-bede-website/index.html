@@ -1,0 +1,410 @@
+---
+# ============================================================
+# CLOUDCANNON EDITABLE VARIABLES
+# ============================================================
+mass_ticker: "Mass Times: Saturday Vigil 5:00 PM • Sunday 8:00 AM, 10:00 AM, 12:00 PM"
+confession_ticker: "Confession: Saturday 3:30 PM - 4:30 PM"
+hero_title: "St. Bede the Venerable"
+hero_subtitle: "Holland, Pennsylvania"
+hero_image: "https://images.unsplash.com/photo-1548625361-155deee25968?auto=format&fit=crop&q=80&w=1800"
+pastor_years: "25"
+
+# The Rectory employee can now add, remove, rename, or drag-to-reorder these links in the sidebar
+navigation:
+  - text: "Our Parish"
+    link: "#about"
+    style: "standard"
+  - text: "Mass Times"
+    link: "#mass"
+    style: "highlight-gold"
+  - text: "Ministries"
+    link: "#ministries"
+    style: "standard"
+  - text: "Events"
+    link: "#news"
+    style: "standard"
+  - text: "Online Giving"
+    link: "#contact"
+    style: "button-solid"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="St. Bede the Venerable Parish — Holland, PA. A welcoming Catholic community. Mass times, sacraments, bulletins, and parish life."/>
+<title>St. Bede the Venerable — Holland, PA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+:root {
+  --navy:        #1B2A4A;
+  --navy-deep:   #0F1A30;
+  --gold:        #B8922A;
+  --gold-light:  #D4AA5A;
+  --gold-pale:   #F5EDD8;
+  --ivory:       #FAF8F4;
+  --stone:       #EDE8DF;
+  --text:        #1A1A18;
+  --text-mid:    #4A4A45;
+  --text-muted:  #7A7A72;
+  --white:       #FFFFFF;
+  --font-serif:  'Cormorant Garamond', Georgia, serif;
+  --font-sans:   'Inter', system-ui, sans-serif;
+  --max:         1200px;
+  --radius:      4px;
+  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-sans); color: var(--text); background: var(--ivory); line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 1.5rem; }
+@media (min-width: 768px) { .container { padding: 0 2.5rem; } }
+
+/* ============================================================
+   MASS TIMES TICKER — top of page, always visible
+============================================================ */
+.mass-ticker {
+  background: var(--navy-deep);
+  color: rgba(255,255,255,0.92);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.mass-ticker__label { color: var(--gold-light); }
+.mass-ticker__dot { color: var(--gold); opacity: 0.6; }
+.mass-ticker__link {
+  color: var(--gold-light);
+  border-bottom: 1px solid rgba(212,170,90,0.4);
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.mass-ticker__link:hover { color: var(--white); }
+
+/* ============================================================
+   STICKY HEADER
+============================================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  height: 72px;
+}
+.header__logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+  filter: brightness(1.1);
+}
+
+/* Nav */
+.primary-nav { display: none; }
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+.nav-link:hover, .nav-link:focus-visible { color: var(--white); background: rgba(255,255,255,0.08); }
+
+/* Mass Times nav item — gold highlight */
+.nav-link--times {
+  color: var(--gold-light);
+  background: rgba(184,146,42,0.15);
+  font-weight: 600;
+}
+.nav-link--times:hover { background: rgba(184,146,42,0.28); color: var(--gold-light); }
+
+/* Give button */
+.nav-link--give {
+  background: var(--gold);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+}
+.nav-link--give:hover { background: var(--gold-light); color: var(--navy); }
+
+@media (min-width: 900px) {
+  .primary-nav { display: flex; align-items: center; gap: 0.5rem; }
+  .nav-toggle { display: none; }
+}
+
+/* ============================================================
+   HERO — full bleed, image-first, cinematic
+============================================================ */
+.hero {
+  position: relative;
+  height: 92vh;
+  min-height: 580px;
+  max-height: 900px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.03);
+  animation: heroScale 12s var(--ease) forwards;
+}
+@keyframes heroScale {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.00); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__img { animation: none; transform: scale(1); }
+}
+.hero__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(11,17,32,0.92) 0%,
+    rgba(11,17,32,0.55) 45%,
+    rgba(11,17,32,0.1)  100%
+  );
+}
+.hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 1.5rem 5rem;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.hero__eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.75rem;
+}
+.hero__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.hero__sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+}
+.hero__btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border-radius: var(--radius);
+  transition: all 0.2s var(--ease);
+  white-space: nowrap;
+}
+.btn--primary { background: var(--gold); color: var(--white); }
+.btn--primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(184,146,42,0.4); }
+.btn--ghost { background: rgba(255,255,255,0.12); color: var(--white); border: 1.5px solid rgba(255,255,255,0.35); backdrop-filter: blur(8px); }
+.btn--ghost:hover { background: rgba(255,255,255,0.22); }
+
+/* Mobile Menu Toggle button styling */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: var(--white);
+}
+.hamburger, .hamburger::before, .hamburger::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s var(--ease), opacity 0.25s;
+  position: relative;
+}
+.hamburger::before, .hamburger::after { content: ''; position: absolute; left: 0; }
+.hamburger::before { top: -7px; }
+.hamburger::after  { top: 7px; }
+.nav-toggle[aria-expanded="true"] .hamburger { background: transparent; }
+.nav-toggle[aria-expanded="true"] .hamburger::before { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle[aria-expanded="true"] .hamburger::after  { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Mobile nav panel */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--navy-deep);
+  z-index: 99;
+  overflow-y: auto;
+  padding: 90px 2rem 3rem;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.mobile-nav.is-open { display: flex; }
+.mobile-nav a {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1rem 0;
+  color: rgba(255,255,255,0.85);
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: color 0.2s;
+}
+.mobile-nav a:hover { color: var(--gold-light); }
+.mobile-nav__times { color: var(--gold-light) !important; font-weight: 600 !important; }
+.mobile-nav__give {
+  margin-top: 1.5rem;
+  background: var(--gold) !important;
+  color: var(--white) !important;
+  border-radius: var(--radius) !important;
+  text-align: center !important;
+  padding: 1rem !important;
+  border-bottom: none !important;
+}
+</style>
+</head>
+<body>
+
+  <!-- DYNAMIC CLOUDCANNON ALERTS -->
+  <div class="mass-ticker">
+    <span class="mass-ticker__label">🔔 Notice:</span>
+    <span data-cms-bind="page.mass_ticker">{{ page.mass_ticker }}</span>
+    <span class="mass-ticker__dot">•</span>
+    <span data-cms-bind="page.confession_ticker">{{ page.confession_ticker }}</span>
+  </div>
+
+  <!-- HEADER & ACCESSIBLE CMS NAVIGATION -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <img src="https://st-bede.org/wp-content/uploads/2026/01/StBede-logo-gold.png" alt="St. Bede Logo"/>
+      </a>
+      
+      <!-- Desktop Navigation Component -->
+      <nav class="primary-nav" aria-label="Main Navigation">
+        <ul class="nav-list" data-cms-bind="page.navigation">
+          {% for item in page.navigation %}
+            <li>
+              <a href="{{ item.link }}" 
+                 class="nav-link {% if item.style == 'highlight-gold' %}nav-link--times{% elif item.style == 'button-solid' %}nav-link--give{% endif %}">
+                {{ item.text }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-toggle" aria-label="Toggle Menu" aria-expanded="false" onclick="toggleMobileNav()">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Overlay Menu Component -->
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
+    {% for item in page.navigation %}
+      <a href="{{ item.link }}" 
+         class="{% if item.style == 'highlight-gold' %}mobile-nav__times{% elif item.style == 'button-solid' %}mobile-nav__give{% endif %}"
+         onclick="toggleMobileNav()">
+        {{ item.text }}
+      </a>
+    {% endfor %}
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <img class="hero__img" src="{{ page.hero_image }}" alt="St. Bede Parish Interior Layout" data-cms-bind="page.hero_image"/>
+    <div class="hero__gradient"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow">Welcome to</p>
+      <h1 class="hero__title" data-cms-bind="page.hero_title">{{ page.hero_title }}</h1>
+      <p class="hero__sub" data-cms-bind="page.hero_subtitle">{{ page.hero_subtitle }}</p>
+      <div class="hero__btns">
+        <a href="#mass" class="btn btn--primary">Mass Schedules</a>
+        <a href="#about" class="btn btn--ghost">Our Community</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JAVASCRIPT FOR MOBILE PANEL OPERATION -->
+  <script>
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      const button = document.querySelector('.nav-toggle');
+      const isOpen = nav.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+  </script>
+
+</body>
+</html>

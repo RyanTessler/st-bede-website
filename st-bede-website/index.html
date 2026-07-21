@@ -1,42 +1,38 @@
 ---
-# ============================================================
-# CLOUDCANNON EDITABLE VARIABLES
-# ============================================================
-mass_ticker: "Mass Times: Saturday Vigil 5:00 PM • Sunday 8:00 AM, 10:00 AM, 12:00 PM"
-confession_ticker: "Confession: Saturday 3:30 PM - 4:30 PM"
-hero_title: "St. Bede the Venerable"
-hero_subtitle: "Holland, Pennsylvania"
-hero_image: "https://images.unsplash.com/photo-1548625361-155deee25968?auto=format&fit=crop&q=80&w=1800"
-pastor_years: "25"
-
-# The Rectory employee can now add, remove, rename, or drag-to-reorder these links in the sidebar
+mass_ticker: 'Mass Times: Saturday Vigil 5:00 PM • Sunday 8:00 AM, 10:00 AM, 12:00 PM'
+confession_ticker: 'Confession: Saturday 3:30 PM - 4:30 PM'
+hero_title: St. Bede the Venerable
+hero_subtitle: Holland, Pennsylvania
+hero_image: >-
+  https://st-bede.org/wp-content/uploads/2022/08/StBedeBuildingExteriorFiltered.png
+pastor_years: '25'
 navigation:
-  - text: "Our Parish"
-    link: "#about"
-    style: "standard"
-  - text: "Mass Times"
-    link: "#mass"
-    style: "highlight-gold"
-  - text: "Ministries"
-    link: "#ministries"
-    style: "standard"
-  - text: "Events"
-    link: "#news"
-    style: "standard"
-  - text: "Online Giving"
-    link: "#contact"
-    style: "button-solid"
+  - text: Our Parish
+    link: '#about'
+    style: standard
+  - text: Mass Times
+    link: '#mass'
+    style: highlight-gold
+  - text: Ministries
+    link: '#ministries'
+    style: standard
+  - text: Events
+    link: '#news'
+    style: standard
+  - text: Online Giving
+    link: '#contact'
+    style: button-solid
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="St. Bede the Venerable Parish — Holland, PA. A welcoming Catholic community. Mass times, sacraments, bulletins, and parish life."/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="St. Bede the Venerable Parish — Holland, PA. A welcoming Catholic community. Mass times, sacraments, bulletins, and parish life." />
 <title>St. Bede the Venerable — Holland, PA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
 /* ============================================================
    DESIGN TOKENS
@@ -345,7 +341,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <header class="site-header">
     <div class="container header__inner">
       <a href="#" class="header__logo">
-        <img src="https://st-bede.org/wp-content/uploads/2026/01/StBede-logo-gold.png" alt="St. Bede Logo"/>
+        <img src="https://st-bede.org/wp-content/uploads/2026/01/StBede-logo-gold.png" alt="St. Bede Logo" />
       </a>
       
       <!-- Desktop Navigation Component -->
@@ -353,8 +349,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
         <ul class="nav-list" data-cms-bind="page.navigation">
           {% for item in page.navigation %}
             <li>
-              <a href="{{ item.link }}" 
-                 class="nav-link {% if item.style == 'highlight-gold' %}nav-link--times{% elif item.style == 'button-solid' %}nav-link--give{% endif %}">
+              <a href="{{ item.link }}" class="nav-link {% if item.style == 'highlight-gold' %}nav-link--times{% elif item.style == 'button-solid' %}nav-link--give{% endif %}">
                 {{ item.text }}
               </a>
             </li>
@@ -372,9 +367,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   <!-- Mobile Overlay Menu Component -->
   <nav class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation">
     {% for item in page.navigation %}
-      <a href="{{ item.link }}" 
-         class="{% if item.style == 'highlight-gold' %}mobile-nav__times{% elif item.style == 'button-solid' %}mobile-nav__give{% endif %}"
-         onclick="toggleMobileNav()">
+      <a href="{{ item.link }}" class="{% if item.style == 'highlight-gold' %}mobile-nav__times{% elif item.style == 'button-solid' %}mobile-nav__give{% endif %}" onclick="toggleMobileNav()">
         {{ item.text }}
       </a>
     {% endfor %}
@@ -382,7 +375,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 
   <!-- HERO SECTION -->
   <section class="hero">
-    <img class="hero__img" src="{{ page.hero_image }}" alt="St. Bede Parish Interior Layout" data-cms-bind="page.hero_image"/>
+    <img class="hero__img" src="{{ page.hero_image }}" alt="St. Bede Parish Interior Layout" data-cms-bind="page.hero_image" />
     <div class="hero__gradient"></div>
     <div class="hero__content">
       <p class="hero__eyebrow">Welcome to</p>

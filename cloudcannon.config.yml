@@ -1,0 +1,11 @@
+editor:
+  default_path: index.html
+
+_inputs:
+  navigation:
+    type: array
+    options:
+      structures:
+        - text: "New Link"
+          link: "#"
+          style: "standard"
